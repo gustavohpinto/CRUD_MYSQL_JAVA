@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 02-Ago-2021 às 02:58
+-- Generation Time: 19-Ago-2021 às 17:50
 -- Versão do servidor: 10.1.37-MariaDB
 -- versão do PHP: 5.6.40
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `crud`
 --
-CREATE DATABASE IF NOT EXISTS `crud` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `crud`;
 
 -- --------------------------------------------------------
 
@@ -89,7 +87,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`idUsuario`, `usuario`, `fone`, `login`, `senha`) VALUES
-(1, 'Anderson Vanin', '11987348735', 'anderson', '1234');
+(1, 'Anderson Vanin', '11987348735', 'anderson', '1234'),
+(2, 'Gustavo Pinto', '11976261933', 'gustavo', '1234');
 
 --
 -- Indexes for dumped tables
@@ -122,7 +121,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `idCli` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idCli` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `ordem_servico`
@@ -134,7 +133,7 @@ ALTER TABLE `ordem_servico`
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
