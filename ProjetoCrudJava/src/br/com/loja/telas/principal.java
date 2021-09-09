@@ -36,13 +36,14 @@ public class principal extends javax.swing.JFrame {
         lblUsuario = new javax.swing.JLabel();
         lblData = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        lblUsuario1 = new javax.swing.JLabel();
         Menu = new javax.swing.JMenuBar();
         MenuCadastro = new javax.swing.JMenu();
         MenuCadastroCliente = new javax.swing.JMenuItem();
         MenuCadastroOS = new javax.swing.JMenuItem();
         MenuCadastroUsuario = new javax.swing.JMenuItem();
         MenuRelatorio = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        MenuRelatorioServicos = new javax.swing.JMenuItem();
         MenuAjuda = new javax.swing.JMenu();
         MenuAjudaSobre = new javax.swing.JMenuItem();
         MenuOpcoes = new javax.swing.JMenu();
@@ -62,7 +63,7 @@ public class principal extends javax.swing.JFrame {
         Desktop.setLayout(DesktopLayout);
         DesktopLayout.setHorizontalGroup(
             DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 341, Short.MAX_VALUE)
+            .addGap(0, 450, Short.MAX_VALUE)
         );
         DesktopLayout.setVerticalGroup(
             DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -73,6 +74,8 @@ public class principal extends javax.swing.JFrame {
 
         lblData.setText("Data: ");
 
+        lblUsuario1.setText("Seja bem vindo,");
+
         MenuCadastro.setText("Cadastro");
 
         MenuCadastroCliente.setText("Cliente");
@@ -82,14 +85,21 @@ public class principal extends javax.swing.JFrame {
         MenuCadastro.add(MenuCadastroOS);
 
         MenuCadastroUsuario.setText("Usuário");
+        MenuCadastroUsuario.setEnabled(false);
+        MenuCadastroUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuCadastroUsuarioActionPerformed(evt);
+            }
+        });
         MenuCadastro.add(MenuCadastroUsuario);
 
         Menu.add(MenuCadastro);
 
         MenuRelatorio.setText("Relatório");
 
-        jMenuItem1.setText("Serviços");
-        MenuRelatorio.add(jMenuItem1);
+        MenuRelatorioServicos.setText("Serviços");
+        MenuRelatorioServicos.setEnabled(false);
+        MenuRelatorio.add(MenuRelatorioServicos);
 
         Menu.add(MenuRelatorio);
 
@@ -125,24 +135,33 @@ public class principal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(Desktop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblUsuario)
-                    .addComponent(lblData)
-                    .addComponent(jLabel3))
-                .addGap(0, 190, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblUsuario1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblUsuario))
+                    .addComponent(lblData))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Desktop)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblUsuario)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblData)
-                .addContainerGap(263, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(jLabel3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblUsuario1)
+                            .addComponent(lblUsuario))
+                        .addGap(24, 24, 24)
+                        .addComponent(lblData)))
+                .addContainerGap(335, Short.MAX_VALUE))
+            .addComponent(Desktop)
         );
 
         pack();
@@ -169,6 +188,12 @@ public class principal extends javax.swing.JFrame {
         sobre sobreTela = new sobre();
         sobreTela.setVisible(true);
     }//GEN-LAST:event_MenuAjudaSobreActionPerformed
+
+    private void MenuCadastroUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCadastroUsuarioActionPerformed
+        usuarios usuariosTela = new usuarios();
+        usuariosTela.setVisible(true);
+        Desktop.add(usuariosTela);
+    }//GEN-LAST:event_MenuCadastroUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,14 +238,15 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JMenu MenuCadastro;
     private javax.swing.JMenuItem MenuCadastroCliente;
     private javax.swing.JMenuItem MenuCadastroOS;
-    private javax.swing.JMenuItem MenuCadastroUsuario;
+    public static javax.swing.JMenuItem MenuCadastroUsuario;
     private javax.swing.JMenu MenuOpcoes;
     private javax.swing.JMenuItem MenuOpcoesSair;
     private javax.swing.JMenu MenuRelatorio;
+    public static javax.swing.JMenuItem MenuRelatorioServicos;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JLabel lblData;
-    private javax.swing.JLabel lblUsuario;
+    public static javax.swing.JLabel lblUsuario;
+    private javax.swing.JLabel lblUsuario1;
     // End of variables declaration//GEN-END:variables
 }

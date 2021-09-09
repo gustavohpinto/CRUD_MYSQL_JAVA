@@ -34,12 +34,22 @@ public class telaLogin extends javax.swing.JFrame {
             rs = pst.executeQuery();
             
             if (rs.next()){
-                //abre a tela principal
-                //JOptionPane.showMessageDialog(null, "ESTOU ABRINDO A TELA PRINCIPAL");
-                principal principalTela = new principal();
-                principalTela.setVisible(true);
-                this.dispose();
-                conexao.close();
+                String perfil = rs.getString(6);
+                if (perfil.equals("admin")) { 
+                    principal principalTela = new principal(); 
+                    principalTela.setVisible(true);
+                    principal.MenuRelatorioServicos.setEnabled(true); 
+                    principal.MenuCadastroUsuario.setEnabled(true); 
+                    principal.lblUsuario.setText(rs.getString(2));
+                    this.dispose(); 
+                    conexao.close();
+                } else{ 
+                    principal principalTela = new principal(); 
+                    principalTela.setVisible(true);
+                    principal.lblUsuario.setText(rs.getString(2));
+                    this.dispose(); 
+                    conexao.close();        
+                }
             }else{
                 JOptionPane.showMessageDialog(null,"Usuário/Senha Inválidos!");
             }
