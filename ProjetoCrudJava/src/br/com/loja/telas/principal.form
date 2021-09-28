@@ -18,6 +18,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cliente"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuCadastroClienteActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="MenuCadastroOS">
               <Properties>
@@ -151,7 +154,7 @@
               </Group>
               <EmptySpace pref="335" max="32767" attributes="0"/>
           </Group>
-          <Component id="Desktop" alignment="0" max="32767" attributes="0"/>
+          <Component id="Desktop" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>

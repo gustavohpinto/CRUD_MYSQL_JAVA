@@ -82,6 +82,59 @@ public class usuarios extends javax.swing.JInternalFrame {
           JOptionPane.showMessageDialog(null, e);
       }    
     }
+    
+    private void alterar(){
+        String sql = "UPDATE usuarios set usuario=?, fone=?, login=?, senha=?, " + "perfil=? WHERE idUsuario=?";
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1, txtNome.getText());
+            pst.setString(2, txtTel.getText());
+            pst.setString(3, txtLogin.getText());
+            String captura_senha = new String(txtSenha.getText());
+            pst.setString(4, captura_senha);
+            pst.setString(5, comboPerfil.getSelectedItem().toString());
+            pst.setString(6, txtId.getText());
+            if (txtId.getText().isEmpty() || txtNome.getText().isEmpty() || txtTel.getText().isEmpty() || 
+                    txtLogin.getText().isEmpty() || txtSenha.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null,"Preencha todos os campos obrigatórios!");
+            } else {
+                int adicionado = pst.executeUpdate();
+                if (adicionado>0){
+                    JOptionPane.showMessageDialog(null,"Dados do usuário alterado com sucesso!");
+                    txtId.setText(null);
+                    txtNome.setText(null);
+                    txtTel.setText(null);
+                    txtLogin.setText(null);
+                    txtSenha.setText(null);
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+    private void apagar(){
+        //antes de remover fazer uma confirmação de remoção
+        int confirma = JOptionPane.showConfirmDialog(null, "Deseja apagar esse usuário?", "Atenção", JOptionPane.YES_NO_OPTION);
+        if (confirma == JOptionPane.YES_OPTION){
+            String sql = "DELETE FROM usuarios WHERE idUsuario=?";
+            try {
+                pst = conexao.prepareStatement(sql);
+                pst.setString(1, txtId.getText());
+                int apagado = pst.executeUpdate();
+                if (apagado > 0){
+                    JOptionPane.showMessageDialog(null, "Usuário apagado!");
+                    txtId.setText(null);
+                    txtNome.setText(null);
+                    txtTel.setText(null);
+                    txtLogin.setText(null);
+                    txtSenha.setText(null);
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -111,7 +164,10 @@ public class usuarios extends javax.swing.JInternalFrame {
         btnApagar = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
         setMaximizable(true);
+        setResizable(true);
         setTitle("Usuários");
         setPreferredSize(new java.awt.Dimension(450, 437));
 
@@ -179,9 +235,19 @@ public class usuarios extends javax.swing.JInternalFrame {
 
         btnApagar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/loja/icones/delete.png"))); // NOI18N
         btnApagar.setPreferredSize(new java.awt.Dimension(64, 64));
+        btnApagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApagarActionPerformed(evt);
+            }
+        });
 
         btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/loja/icones/update.png"))); // NOI18N
         btnAlterar.setPreferredSize(new java.awt.Dimension(64, 64));
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -270,7 +336,7 @@ public class usuarios extends javax.swing.JInternalFrame {
                     .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnApagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         pack();
@@ -303,6 +369,14 @@ public class usuarios extends javax.swing.JInternalFrame {
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
        adicionar();
     }//GEN-LAST:event_btnAdicionarActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+       alterar();
+    }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApagarActionPerformed
+       apagar();
+    }//GEN-LAST:event_btnApagarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

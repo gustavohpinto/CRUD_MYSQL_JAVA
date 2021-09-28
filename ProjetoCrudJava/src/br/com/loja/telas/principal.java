@@ -79,6 +79,11 @@ public class principal extends javax.swing.JFrame {
         MenuCadastro.setText("Cadastro");
 
         MenuCadastroCliente.setText("Cliente");
+        MenuCadastroCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuCadastroClienteActionPerformed(evt);
+            }
+        });
         MenuCadastro.add(MenuCadastroCliente);
 
         MenuCadastroOS.setText("OS");
@@ -161,7 +166,7 @@ public class principal extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addComponent(lblData)))
                 .addContainerGap(335, Short.MAX_VALUE))
-            .addComponent(Desktop)
+            .addComponent(Desktop, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -194,6 +199,12 @@ public class principal extends javax.swing.JFrame {
         usuariosTela.setVisible(true);
         Desktop.add(usuariosTela);
     }//GEN-LAST:event_MenuCadastroUsuarioActionPerformed
+
+    private void MenuCadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCadastroClienteActionPerformed
+        clientes clientesTela = new clientes();
+        clientesTela.setVisible(true);
+        Desktop.add(clientesTela);
+    }//GEN-LAST:event_MenuCadastroClienteActionPerformed
 
     /**
      * @param args the command line arguments
